@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  </head>
+  <body>
+
+    <nav><!-- Nav Bar -->
+      <div class="logo">Noah Streveler</div>
+      <div class="openMenu"><i class="fa fa-bars"></i></div>
+      <ul class="mainMenu">
+        <li><a href="index.html">About</a></li>
+        <li><a href="timeline.html">My Timeline</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="athletics.html">Athletics</a></li>
+        <li><a href="contactme.html">Contact</a></li>
+        <div class="closeMenu"><i class="fa fa-times"></i></div>
+        <span class="icons">
+          <a href="https://www.instagram.com/noah.strev/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/noah-streveler990/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.hackerrank.com/profile/noahstreveler"><i class="fab fa-hackerrank"></i></a>
+          <a href="https://github.com/NoahStrev"><i class="fab fa-github"></i></a>
+        </span>
+      </ul>
+    </nav>
+
+    <p class="section__text__p1">Here is</p>
+    <h1 class="title">My Track Career Bests</h1>
+
+    <section id="athletics">
+      <!-- Where the events webscraping will go-->
+      <table id="eventTable" class="center">
+        <thead>
+          <th> Event </th>
+          <th> PR </th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <br><br>
+      <h1 class="title">My Last Three Meets</h1>
+      <br>
+
+      <!-- Where the recent meet webscraping will go-->
+      <table id="meetTable" class="center">
+        <thead>
+          <th> Meet Title </th>
+          <th> Meet Date </th>
+          <th> Event </th>
+          <th> Distance Thrown </th>
+          <th> Placement </th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+    
+    <footer class="athletics_move_down">
+      <br>
+      <p>Copyright &#169; 2024 Noah Streveler. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- The import so I can scrape -->
+    <script>
+      //Finding the location to put the webscraped data
+      let table = document.getElementById("eventTable");
+      let table2 = document.getElementById("meetTable");
+
+      // parse the url out
+      const url = 'https://www.tfrrs.org/athletes/7734272/Carroll_WI/Noah_Streveler.html';
+        
+      axios.get(url)
+      .then((response) => {
+        // Get the events
+        const html = response.data;
+        const parser = new DOMParser();
+        const document = parser.parseFromString(html, "text/html");
+        const div1Paras = document.getElementsByClassName('col-lg-8');
+
+        // Get the text content
+        let result2 = "";
+        let removeNewLine = "";
+        for (let i = 0; i < div1Paras.length; i++) {
+            result2 += `${div1Paras[i].textContent}`;
+        }
+        // Remove all the new lines
+        removeNewLine = result2.replace(/\n/g, "")
+
+        let itemList = removeNewLine.split(" ");
+        // Remove duplicates and items containing parentheses
+        itemList = itemList.filter((item, index) => itemList.indexOf(item) === index && !/\([^()]*\)/.test(item) && item.trim() !== '' && !item.includes("'") && !item.includes('"'));
+
+        // Loop to put the events into tables
+        while (itemList.length > 0) {
+          let row = table.insertRow(-1);
+          c1 = row.insertCell(0);
+          c2 = row.insertCell(1);
+
+          //Get the event and replace the shortened name with a long one
+          temp = itemList[0];
+          temp = temp.replace(/JT/g, "Javelin Throw");
+          temp = temp.replace(/HT/g, "Hammer Throw");
+          temp = temp.replace(/WT/g, "Weight Throw");
+          temp = temp.replace(/55H/g, "55m Hurdles");
+          c1.innerText = temp;
+          c2.innerText = itemList[1];
+
+          //Remove the two items that were displayed
+          itemList.shift();
+          itemList.shift();
+        }
+
+
+        // RECENT MEETS
+        //Get all of my meets
+        const output = document.querySelector('.tab-content.pt-20.col-lg-12');
+        
+        // Get the text content
+        let result = '';
+        if (output) {
+          result = output.textContent;
+        }
+
+        // Find the index of this statement as it always comes before the meets, 
+        // and remove everything before the first meet
+        let index = result.indexOf('padding:0 10px;');
+        index += ('padding:0 10px;'.length) + 10
+        result = result.substring(index);
+
+        // Get rid of the newlines
+        removeNewLine = result.replace(/\n/g, "")
+        let count = 0;
+
+        //Find the index of the last of last character for the three most recent meets
+        for (let i = 0; i < removeNewLine.length; i++) {
+          if (removeNewLine[i] === ')') {
+            count++;
+            if (count === 3) {
+              index = i;
+              break;
+            }
+          }
+        }
+
+        //Get rid of the meets that are after the three most recent
+        if (index !== -1) {
+          removeNewLine = removeNewLine.substring(0, index + 1);
+        }
+
+        let firstMeet = '';
+        let secondMeet = '';
+        let thirdMeet = '';
+        let currentSubstring = '';
+        removeNewLine = removeNewLine.replace(/\s{2,}/g, ', ');
+
+        for (let i = 0; i < removeNewLine.length; i++) {
+          if (removeNewLine[i] === ')') {
+            //Removing all commas except the second so the information can be sectioned properly
+            let firstCommaIndex = currentSubstring.indexOf(',');
+        
+            currentSubstring = currentSubstring.slice(0, firstCommaIndex) + currentSubstring.slice(firstCommaIndex + 1);
+            currentSubstring = currentSubstring.replace(/(,)(.*)/g, (match, p1, p2) => p1 + p2.replace(/,/g, ''));
+            currentSubstring = currentSubstring.slice(0, -3);
+
+            //Put the finished substring into a list
+            if(firstMeet == ''){ //Check if this meet has already been entered, if not enter it
+              firstMeet = currentSubstring;
+            }
+            else if(secondMeet == ''){
+              secondMeet = currentSubstring;
+            }
+            else{
+              thirdMeet = currentSubstring;
+            }
+            currentSubstring = '';
+          } else {
+            currentSubstring += removeNewLine[i];
+            if (removeNewLine[i] === '"'){//Remove the distance in feet
+              currentSubstring = currentSubstring.slice(0, -7);
+            }
+          }
+        }
+
+        let i = 0;
+        while (i < 3){// Loop to put the recent meet information into the table
+          if(i == 0){
+            meet = firstMeet;
+          }
+          else if(i==1){
+            meet = secondMeet;
+          }
+          else{
+            meet = thirdMeet;
+          }
+
+          //Add a row to the table
+          let row = table2.insertRow(-1);
+          c1 = row.insertCell(0);
+          c2 = row.insertCell(1);
+          c3 = row.insertCell(2);
+          c4 = row.insertCell(3);
+          c5 = row.insertCell(4);
+
+          //The meet title
+          let parts = meet.split(',');
+          c1.innerText = parts[0].trim();
+          let remainingString = parts.slice(1).join(',').trim();
+
+          //The date of the meet
+          let match = remainingString.match(/(.*?)(2023|2024)(.*)/);
+          c2.innerText = match[1].trim() + ', ' + match[2];
+          remainingString = match[3];
+
+          //The Event
+          match = remainingString.match(/(.*?)(\d.*)/);
+          temp = match[1].trim();
+          temp = temp.replace(/JT/g, "Javelin Throw");
+          c3.innerText = temp
+          remainingString = match[2];
+
+          //The distance thrown
+          match = remainingString.match(/(.*?m)(.*)/);
+          c4.innerText = match[1].trim();
+
+          //The placement in that meet
+          c5.innerText = match[2];
+          i++
+        }
+                
+      })
+      .catch((error) => {// If something goes wrong
+        console.error(error);
+        outputDiv.innerText = 'An error occurred while fetching the data.';
+      });
+    </script>
+  </body>
+</html>

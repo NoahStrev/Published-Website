@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mediaqueries.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous">
+</head>
+  <body>
+    <nav><!-- Nav Bar -->
+      <div class="logo">Noah Streveler</div>
+      <div class="openMenu"><i class="fa fa-bars"></i></div>
+      <ul class="mainMenu">
+        <li><a href="index.html">About</a></li>
+        <li><a href="timeline.html">My Timeline</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="athletics.html">Athletics</a></li>
+        <li><a href="contactme.html">Contact</a></li>
+        <div class="closeMenu"><i class="fa fa-times"></i></div>
+        <span class="icons">
+          <a href="https://www.instagram.com/noah.strev/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/noah-streveler990/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.hackerrank.com/profile/noahstreveler"><i class="fab fa-hackerrank"></i></a>
+          <a href="https://github.com/NoahStrev"><i class="fab fa-github"></i></a>
+        </span>
+      </ul>
+    </nav>
+
+    <br>
+    <p class="section__text__p1">Here is a list of</p>
+    <h1 class="title">My Completed Courses</h1>
+
+    <div class="classsection"><!-- The Major Section -->
+      <h2>Major:</h2>
+      <div class="leftspacing"><!-- Computer Science -->
+        <p class="Computer_Science" onclick="toggleVisibility('Computer_Science')">Computer Science</p>
+        <div id="Computer_Science" class="smallertext" onclick="toggleVisibility('Computer_Science')"><!-- On click on both so they both are clickables -->
+        <ul>
+          <li>CSC 110 - Problem Solving through Programming</li>
+          <li>CSC 111 - Introduction to JAVA</li>
+          <li>CSC 226 - Data Structures using JAVA</li>
+          <li>CSC 240 - Computer Organization and Architecture</li>
+          <li>CSC 303 - Network Protocols</li>
+          <li>CSC 319 - World Wide Web Programming</li>
+          <li>CSC 341 - Software Design and Development</li>
+          <li>CSC 351 - Database Design and Implementation</li>
+          <li>CSC 353 - Mobile Application Development</li>
+          <li>CSC 450 - Projects-Computer Science Majors</li>
+        </ul>
+        </div>
+        <hr>
+      </div>
+    </div>
+      
+    <div class="classsection"> <!-- The minor section-->
+      <h2>Minors:</h2>
+      <div class="leftspacing"><!-- Business analytics -->
+        <p class="Business_Analytics" onclick="toggleVisibility('Business_Analytics')">Business Analytics</p>
+        <div id="Business_Analytics" class="smallertext" onclick="toggleVisibility('Business_Analytics')">
+          <ul>
+            <li>AVS 103 - Introduction to Unmanned Aircraft Systems</li>
+            <li>GRD 106 - Introduction to Graphic Design</li>
+            <li>BUS 280 - Fundamentals of Applied Analytics</li>
+            <li>BUS 301 - Principles of Marketing</li>
+            <li>BUS 307 - Data Visualization Tools and Techniques</li>
+            <li>BUS 399 - Applied Business Analytics Projects</li>
+          </ul>
+        </div>
+        <hr>
+      </div>
+          
+      <div class="leftspacing"><!-- Math -->
+        <p class="Mathematics" onclick="toggleVisibility('Mathematics')">Mathematics</p>
+        <div id="Mathematics" class="smallertext" onclick="toggleVisibility('Mathematics')">
+          <ul>
+            <li>CMP 112 - Computational Thinking I</li>
+            <li>CMP 114 - Computational Thinking II - Statistical Analysis Emphasis</li>
+            <li>MAT 160 - Calculus I</li>
+            <li>MAT 161 - Calculus II</li>
+            <li>MAT 207 - Calculus III</li>
+            <li>MAT 208 - Linear Algebra</li>
+            <li>MAT 312 - Theory of Probability & Statistics</li>
+          </ul>
+        </div>
+        <hr>
+      </div>
+          
+      <div class="leftspacing"><!-- Artificial Intelligence -->
+        <p class="AI" onclick="toggleVisibility('AI')">Artificial Intelligence</p>
+        <div id="AI" class="smallertext" onclick="toggleVisibility('AI')">
+          <ul>
+            <li>AIN 180 - Foundations of Artificial Intelligence</li>
+            <li>AIN 210 - Human-AI Interaction</li>
+            <li>AIN 380 - Introduction to Applied Machine Learning</li>
+          </ul>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+    <footer>
+      <p>Copyright &#169; 2024 Noah Streveler. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

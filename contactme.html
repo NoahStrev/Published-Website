@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  </head>
+  <body>
+
+    <nav><!-- Nav Bar -->
+      <div class="logo">Noah Streveler</div>
+      <div class="openMenu"><i class="fa fa-bars"></i></div>
+      <ul class="mainMenu">
+        <li><a href="index.html">About</a></li>
+        <li><a href="timeline.html">My Timeline</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="athletics.html">Athletics</a></li>
+        <li><a href="contactme.html">Contact</a></li>
+        <div class="closeMenu"><i class="fa fa-times"></i></div>
+        <span class="icons">
+          <a href="https://www.instagram.com/noah.strev/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/noah-streveler990/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.hackerrank.com/profile/noahstreveler"><i class="fab fa-hackerrank"></i></a>
+          <a href="https://github.com/NoahStrev"><i class="fab fa-github"></i></a>
+        </span>
+      </ul>
+    </nav>
+
+    <section id="contact"><!-- All of my contact information -->
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assests/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:noahstreveler@gmail.com">noahstreveler@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assests/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/noah-streveler990/">LinkedIn</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assests/github.png"
+            alt="Github icon"
+            class="icon contact-icon"
+          />
+            <p><a href="https://github.com/NoahStrev">Github</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assests/phone.png"
+            alt="Github icon"
+            class="icon contact-icon"
+          />
+          <p><a href=“tel:715-340-4107”>715-340-4107</a></p>
+        </div>
+      </div>
+      <div class="btn-container"><!-- Button to download my resume -->
+        <button class="btn btn-color-2" onclick="window.open('./assests/Back_End_Noah_Streveler_Resume.pdf')">Download Resume</button>
+      </div>
+    </section>
+
+    <footer>
+      <p class="contact_move_down">Copyright &#169; 2024 Noah Streveler. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

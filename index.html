@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  </head>
+  <body>
+
+    <nav>
+      <div class="logo">Noah Streveler</div>
+      <div class="openMenu"><i class="fa fa-bars"></i></div>
+      <ul class="mainMenu">
+        <li><a href="index.html">About</a></li>
+        <li><a href="timeline.html">My Timeline</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="athletics.html">Athletics</a></li>
+        <li><a href="contactme.html">Contact</a></li>
+        <div class="closeMenu"><i class="fa fa-times"></i></div>
+        <span class="icons">
+          <a href="https://www.instagram.com/noah.strev/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/noah-streveler990/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.hackerrank.com/profile/noahstreveler"><i class="fab fa-hackerrank"></i></a>
+          <a href="https://github.com/NoahStrev"><i class="fab fa-github"></i></a>
+        </span>
+      </ul>
+    </nav>
+
+    <section id="profile"><!-- Top sections -->
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Noah Streveler</h1>
+        <p class="section__text__p2">Computer Science Student</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assests/Back_End_Noah_Streveler_Resume.pdf')"
+          >
+            Download Resume
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./contactme.html'">
+            Contact Info
+          </button>
+        </div>
+
+        <div id="socials-container">
+          <img
+            src="./assests/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/noah-streveler990/'"
+          />
+          <img
+            src="./assests/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/NoahStrev'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="about"><!-- Bottom Section -->
+      <div class = "about_move_up">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+          <div class="about-details-container">
+            <div class="about-containers">
+              <div class="details-container">
+                <img
+                  src="./assests/experience.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <h3>Experience</h3>
+                <p>1.5 years - Data Analytics/Engineering<br/> 7 years - Coding</p>
+              </div>
+              <div class="details-container">
+                <img
+                  src="./assests/education.png"
+                  alt="Education icon"
+                  class="icon"
+                />
+                <h3>Education</h3>
+                <p>May, 2020 - High School Diploma<br/>Decemeber, 2024 - Bachelors Degree</p>
+              </div>
+            </div>
+            
+            <div class="text-container">
+              <p class="text-container">
+                My name is Noah Streveler and I am a Computer Science Major at Carroll University.
+                As a computer science major, I have attained a profound comprehension of both computer science principles and programming languages. 
+                Through my coursework and internships, I have gained proficiency in a diverse array of languages such as Java, CSS, HTML, C, Python, JavaScript and many more.
+                I have also become knowledgable in a wide variety of platforms such as dbt, Snowflake, VS Code, Raisers Edge, GitLab, Github, and more
+                Additionally, my minors in mathematics, business analytics, and artificial intelligence have equipped me with knowledge of various other technologies, which has allowed me to integrate my coding proficiencies in multiple practical applications across different fields. 
+                On top of that I am also a two-sport athlete at Carroll University, winning multiple All-Conference, Academic, and All-Region awards while breaking multiple school records.
+                It is through this blend of athletics and academics that I have developed a strong understanding of the significance of teamwork, effective time management, and the importance of discipline.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="footer_move_up">
+        <p>Copyright &#169; 2024 Noah Streveler. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
